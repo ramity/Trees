@@ -250,16 +250,19 @@ void BST::show(Node * node)
 
 int BST::getHeight(int height)
 {
-    return this->getHeight(this->root, height);
-}
-
-int BST::getHeight(Node * node, int height)
-{
     if(this->root == NULL)
     {
         return 0;
     }
-    else if(node->left != NULL && node->right != NULL)
+    else
+    {
+        return this->getHeight(this->root, height);
+    }
+}
+
+int BST::getHeight(Node * node, int height)
+{
+    if(node->left != NULL && node->right != NULL)
     {
         return max(
             this->getHeight(node->left, height + 1),
